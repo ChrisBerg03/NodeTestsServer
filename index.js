@@ -9,6 +9,7 @@ app.get("/", (req, res) => {
     res.send("hello from server");
 });
 
+// get all products
 app.get("/api/products", async (req, res) => {
     try {
         const products = await Product.find({});
@@ -18,6 +19,7 @@ app.get("/api/products", async (req, res) => {
     }
 });
 
+// send in a product
 app.post("/api/products", async (req, res) => {
     try {
         const product = await Product.create(req.body);
@@ -27,6 +29,7 @@ app.post("/api/products", async (req, res) => {
     }
 });
 
+// get a single product by an id
 app.get("/api/products/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -37,6 +40,7 @@ app.get("/api/products/:id", async (req, res) => {
     }
 });
 
+// mongoose / mongoDB database
 mongoose
     .connect(
         "mongodb+srv://chris:MyvgwDZFersDa8eT@backenddb.njcns.mongodb.net/NodeAPI?retryWrites=true&w=majority&appName=backendDB"
